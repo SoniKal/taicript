@@ -1,24 +1,24 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Restaurante = void 0;
-var Restaurante = /** @class */ (function () {
-    function Restaurante(nombre2, l2, c2) {
+class Restaurante {
+    constructor(nombre2, l2, c2) {
         this.listadoPlatos = new Set;
         this.listadoChefs = new Set;
         this.nombre = nombre2;
         this.listadoPlatos = l2;
         this.listadoChefs = c2;
     }
-    Restaurante.prototype.getNombre = function () {
+    getNombre() {
         return this.nombre;
-    };
-    Restaurante.prototype.getListadoPlatos = function () {
+    }
+    getListadoPlatos() {
         return this.listadoPlatos;
-    };
-    Restaurante.prototype.getListadoChefs = function () {
+    }
+    getListadoChefs() {
         return this.listadoChefs;
-    };
-    Restaurante.prototype.aniadirPlato = function (plato) {
+    }
+    aniadirPlato(plato) {
         if (!this.listadoChefs.has(plato.getChefACargo())) {
             throw new Error('El chef no es parte del restaurante');
         }
@@ -26,9 +26,9 @@ var Restaurante = /** @class */ (function () {
             throw new Error('Plato ya registrado');
         }
         this.listadoPlatos.add(plato);
-    };
-    Restaurante.prototype.aniadirChef = function (chef) {
-        var edadChef = new Date().getFullYear() - chef.nacimiento.getFullYear();
+    }
+    aniadirChef(chef) {
+        const edadChef = new Date().getFullYear() - chef.nacimiento.getFullYear();
         if (edadChef < 18) {
             throw new Error('Chef menor de edad');
         }
@@ -36,7 +36,6 @@ var Restaurante = /** @class */ (function () {
             throw new Error('Chef sin experiencia');
         }
         this.listadoChefs.add(chef);
-    };
-    return Restaurante;
-}());
+    }
+}
 exports.Restaurante = Restaurante;
